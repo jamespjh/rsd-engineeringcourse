@@ -8,7 +8,7 @@ same as $6\mathrm{kg}\mathrm{m}^2\mathrm{s}^{2}$ which is the same as
 $2\mathrm{N} \cdot 3\mathrm{m}$
 
 Write a python library to implement handling quantities with units, and
-converting between units, with a github repostiory and a setup.py file, and
+converting between units, with a github repository and a setup.py file, and
 some unit tests.
 
 You should define operators for multiply, equality, and add for your class.
