@@ -15,3 +15,16 @@ def import_config():
         config_file)))
     return definitions
 
+# Create a class for the defined units
+# Operator overloading on __rmul__
+class Unit(object):
+    pass
+
+
+class NumberUnit(object):
+    pass
+
+
+
+
+
