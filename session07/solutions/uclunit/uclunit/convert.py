@@ -15,7 +15,7 @@ def import_config():
         config_file)))
     return definitions
 
-# Create a class for the defined units
+# Class for the base units
 # Operator overloading on __rmul__
 class Unit(object):
     def __init__(self, unit, unit_type, rel_value):
@@ -36,6 +36,7 @@ class Unit(object):
         else:
             raise TypeError("Incompatible units")
 
+# Class for a number combined with a Unit
 class NumberUnit(object):
     def __init__(self, unit, other):
         self.unit = unit
