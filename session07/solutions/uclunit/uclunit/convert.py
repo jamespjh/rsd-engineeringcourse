@@ -18,13 +18,62 @@ def import_config():
 # Create a class for the defined units
 # Operator overloading on __rmul__
 class Unit(object):
-    pass
-
+    def __init__(self, unit, unit_type, rel_value):
+        self.unit = unit
+        self.unit_type = unit_type
+        self.rel_value = rel_value
+    def __repr__(self):
+        return 'Unit(' + self.unit + ')'
+    def __str__(self):
+        return 'Unit(' + self.unit + ')'
+    def __rmul__(self, other):
+        return NumberUnit(self, other)
+    def __eq__(self, other):
+        if type(other) == Unit:
+            condition = self.unit == other.unit and \
+                self.rel_value == self.rel_value
+            return condition
+        else:
+            raise TypeError("Incompatible units")
 
 class NumberUnit(object):
-    pass
-
-
-
-
+    def __init__(self, unit, other):
+        self.unit = unit
+        self.unit_type = unit.unit_type
+        self.rel_value = unit.rel_value
+        self.value = other
+    def __repr__(self):
+        return 'NumberUnit(' + str(self.value) + '*' \
+            + self.unit.unit + ')'
+    def __str__(self):
+        return 'NumberUnit(' + str(self.value) + '*' \
+            + self.unit.unit + ')'
+    def __eq__(self, other):
+        if type(other) == NumberUnit:
+            unit_type_match = self.unit_type == other.unit_type
+            value_match = self.value * self.rel_value == \
+                other.value * other.rel_value
+            return unit_type_match and value_match
+        else:
+            raise IncompatibleUnitsError('Incompatible units')
+    def __add__(self, other):
+        if self.unit_type != other.unit_type:
+            raise IncompatibleUnitsError('Incompatible units')
+        else:
+            convertor = float(self.rel_value) / other.rel_value
+            new_value = (self.value + other.value) * convertor
+            return NumberUnit(self.unit,new_value)            
+    def __rmul__(self, other):
+        if self.unit_type != other.unit_type:
+            raise IncompatibleUnitsError('Incompatible units')
+        else: 
+            new_value = self.value * other
+            return NumberUnit(self.unit,new_value)
+    def to(self,other):
+        if self.unit_type != other.unit_type:
+            raise IncompatibleUnitsError('Incompatible units')
+        else: 
+            convertor = float(self.rel_value) / other.rel_value
+            new_value = self.value * convertor
+            return NumberUnit(other,new_value)
 

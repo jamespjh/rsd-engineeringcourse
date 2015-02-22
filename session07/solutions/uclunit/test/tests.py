@@ -29,5 +29,10 @@ def test_incompatible_unit_multiplication():
         5*meters+2*seconds
 
 # Additional test
+def test_convert_to_minutes_handles_integers_correctly():
+    seconds = Unit('seconds', 'time', 1)
+    minutes = Unit('minutes', 'time', 60)   
+    assert((60*seconds).to(minutes).unit==minutes) 
+
 
 
