@@ -31,11 +31,11 @@ class Unit(object):
 
 # Class for a number combined with a Unit
 class NumberUnit(object):
-    def __init__(self, unit, other):
+    def __init__(self, unit, numval):
         self.unit = unit
         self.unit_type = unit.unit_type
         self.rel_value = unit.rel_value
-        self.value = other
+        self.value = numval
     def __repr__(self):
         return 'NumberUnit(' + str(self.value) + '*' \
             + self.unit.unit + ')'
