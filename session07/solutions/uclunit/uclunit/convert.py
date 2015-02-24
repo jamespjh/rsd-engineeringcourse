@@ -56,12 +56,6 @@ class NumberUnit(object):
         else:
             convertor = float(self.rel_value) / other.rel_value
             new_value = (self.value + other.value) * convertor
-            return NumberUnit(self.unit,new_value)            
-    def __rmul__(self, other):
-        if self.unit_type != other.unit_type:
-            raise IncompatibleUnitsError('Incompatible units')
-        else: 
-            new_value = self.value * other
             return NumberUnit(self.unit,new_value)
     def to(self,other):
         if self.unit_type != other.unit_type:
