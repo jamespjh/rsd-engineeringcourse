@@ -1,6 +1,6 @@
 from nose.tools import assert_raises, assert_equal, assert_true, assert_false
 from nose import with_setup
-from uclunit.convert import Unit, NumberUnit, IncompatibleUnitsError, import_config
+from uclunit.convert import Unit, NumberUnit, IncompatibleUnitsError
 import yaml
 
 # First test suggested in the exercise
