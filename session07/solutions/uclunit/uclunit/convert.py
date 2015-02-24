@@ -28,13 +28,6 @@ class Unit(object):
         return 'Unit(' + self.unit + ')'
     def __rmul__(self, other):
         return NumberUnit(self, other)
-    def __eq__(self, other):
-        if type(other) == Unit:
-            condition = self.unit == other.unit and \
-                self.rel_value == self.rel_value
-            return condition
-        else:
-            raise TypeError("Incompatible units")
 
 # Class for a number combined with a Unit
 class NumberUnit(object):
