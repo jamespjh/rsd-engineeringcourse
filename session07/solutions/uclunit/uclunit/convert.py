@@ -2,21 +2,11 @@
 Convert between different units
 '''
 
-import yaml
-import os
-
 # Define our custom error 
 class IncompatibleUnitsError(Exception):
     pass
 
-# Import the unit definitions
-def import_config():
-    config_file = 'units.yaml'
-    definitions = yaml.load(open(os.path.join(os.path.dirname(__file__),
-        config_file)))
-    return definitions
-
-# Class for the base units
+# Base unit
 class Unit(object):
     def __init__(self, unit, unit_type, rel_value):
         self.unit = unit
@@ -31,7 +21,7 @@ class Unit(object):
     def __rmul__(self, other):
         return NumberUnit(self, other)
 
-# Class for a number combined with a Unit
+# Number combined with a base unit
 class NumberUnit(object):
     def __init__(self, unit, numval):
         self.unit = unit

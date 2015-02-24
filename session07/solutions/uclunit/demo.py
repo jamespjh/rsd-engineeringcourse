@@ -1,7 +1,8 @@
 print('\n> Importing the library...\n')
 
 from nose.tools import assert_raises
-from uclunit.convert import Unit, NumberUnit, IncompatibleUnitsError, import_config
+from uclunit.convert import Unit, NumberUnit, IncompatibleUnitsError
+from uclunit.loadunits import *
 
 # import the unit definitions from a configuration file
 definitions = import_config()
