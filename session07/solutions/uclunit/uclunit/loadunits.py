@@ -9,10 +9,10 @@ def import_config():
         config_file)))
     return definitions
 
-# import the unit definitions from a configuration file
+# Create a dictionary of units from the yaml file
 definitions = import_config()
 
-# load the units into the local namespace
+# Load the units into the global namespace (not ideal...)
 for key, subkey in definitions.iteritems():
     a = {x: Unit(x,key,subkey[x]) for x in subkey.keys()}
     globals().update(a)
