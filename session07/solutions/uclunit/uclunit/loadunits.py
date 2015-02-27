@@ -14,6 +14,5 @@ definitions = import_config()
 
 # Load the units into the global namespace (not ideal...)
 for key, subkey in definitions.iteritems():
-    a = {x: Unit(x,key,subkey[x]) for x in subkey.keys()}
-    globals().update(a)
-
+    theunit = {x: Unit(x,key,subkey[x]) for x in subkey.keys()}
+    globals().update(theunit)
