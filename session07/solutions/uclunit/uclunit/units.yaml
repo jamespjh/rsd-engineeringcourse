@@ -6,7 +6,7 @@ length:
   centimeters: 0.01
   kilometers: 1000.
 
-weight:
+mass:
   grams: 1.
   milligrams: 0.001
   centigrams: 0.01
